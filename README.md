@@ -23,22 +23,25 @@ This project provides a foundation for reading data from EMV smart cards using a
 
 ## Software Requirements
 
-* [Nodepp-arduino](https://github.com/NodeppOficial/nodepp-arduino) installed
-* [Nodepp](https://github.com/NodeppOficial/nodepp) installed
+* [Nodepp-arduino](https://github.com/NodeppOficial/nodepp-arduino) installed in your arduino device
+* [Nodepp](https://github.com/NodeppOficial/nodepp) installed in you PC
 * Arduino IDE.
 
 ## Installation | Arduino
-
-1. Clone this repository: `git clone https://github.com/YOUR_USERNAME/EMV-SMART-CARD-READER.git`.
-2. Copy the `example/emv_reader.ino` in the `root`, and open the project in the Arduino IDE.
-3. Install [Nodepp-arduino](https://docs.arduino.cc/libraries/nodepp) through the Arduino IDE Library Manager.
+```
+📌 Clone this repository: git clone https://github.com/EDBCREPO/emv-reader.
+📌 Copy the example/emv_reader.ino in the root, and open the project in the Arduino IDE.
+📌 Install Nodepp-arduino through the Arduino IDE Library Manager.
+```
 
 ## Installation | PC
 
-1. Clone this repository: `git clone https://github.com/YOUR_USERNAME/EMV-SMART-CARD-READER.git`.
-2. Copy the `example/emv_reader.cpp` in the `root` as `main.cpp`.
-3. Install [Nodepp](https://github.com/NodeppOficial/nodepp) in your PC.
-4. Compile it using `g++ -o main main.cpp ; ./main ?DEVICE=ttyUSBX`.
+```
+📌 Clone this repository: git clone https://github.com/EDBCREPO/emv-reader.
+📌 Copy the example/emv_reader.cpp in the root as main.cpp.
+📌 Install Nodepp in your PC.
+📌 Compile it using g++ -o main main.cpp ; ./main ?DEVICE=ttyUSBX.
+```
 
 ## Usage
 
@@ -49,11 +52,13 @@ This project provides a foundation for reading data from EMV smart cards using a
 
 ## Arduino PINOUTS
 
-* PIN 2 | OUTPUT => VCC Smart Card Pin
-* PIN 6 | OUTPUT => RST Smart Card Pin
-* PIN 3 | OUTPUT => CLK Smart Card Pin
-* PIN 4 | INPUT  => IO  Smart Card Pin
-* PIN 5 | OUTPUT => IO  Smart Card Pin
+```
+📌 PIN 2 | OUTPUT => VCC Smart Card Pin
+📌 PIN 6 | OUTPUT => RST Smart Card Pin
+📌 PIN 3 | OUTPUT => CLK Smart Card Pin
+📌 PIN 4 | INPUT  => IO  Smart Card Pin
+📌 PIN 5 | OUTPUT => IO  Smart Card Pin
+```
 
 ## APDU REFERENCES
 
