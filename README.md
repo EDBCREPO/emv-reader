@@ -63,8 +63,16 @@ This project provides a foundation for reading data from EMV smart cards using a
 ## APDU REFERENCES
 
 ```
-🔗 AID  List:   https://en.wikipedia.org/wiki/EMV
-🔗 TLV  List:   https://www.eftlab.com/knowledge-base/complete-list-of-emv-nfc-tags
-🔗 APDU List:   https://gist.github.com/hemantvallabh/d24d71a933e7319727cd3daa50ad9f2c
-🔗 APDU Status: https://www.eftlab.com/knowledge-base/complete-list-of-apdu-responses
+🔗 TLV  Decoder: https://emvlab.org/tlvutils
+🔗 AID  List:    https://en.wikipedia.org/wiki/EMV
+🔗 TLV  List:    https://www.eftlab.com/knowledge-base/complete-list-of-emv-nfc-tags
+🔗 APDU List:    https://gist.github.com/hemantvallabh/d24d71a933e7319727cd3daa50ad9f2c
+🔗 APDU Status:  https://www.eftlab.com/knowledge-base/complete-list-of-apdu-responses
+
+Articles
+
+🔗 https://hpkaushik121.medium.com/using-apdu-commands-emv-transaction-flow-part-3-65160ea8682a
+🔗 https://www.linkedin.com/pulse/emv-application-specification-read-data-ahmed-hemdan-farghaly
+🔗 https://hpkaushik121.medium.com/understanding-apdu-commands-emv-transaction-flow-part-2-d4e8df07eec#87ed
+🔗 https://medium.com/@androidcrypto/talk-to-your-credit-card-part-6-read-all-files-given-in-the-afl-list-17e2e5d71c6e
 ```

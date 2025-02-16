@@ -17,14 +17,3 @@ a5 26 => File Control Information
       07 4352454449544f
 
 9000 => Success
-
-c0771282025800940c0801010010010200100305019000
-
-c0    => Comando
-77 12 
-82 02 =>Application Interchange Profile 
-      58 00
-94 0c => Application File Locator
-      08 01 01 00 10 01 02 00 10 03 05 01
-
-9000 => success
