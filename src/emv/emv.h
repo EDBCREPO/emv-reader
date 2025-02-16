@@ -48,26 +48,10 @@ protected:
     
     /*─······································································─*/
 
-    void init() const noexcept {
-
-        digitalWrite( obj->IO[0], 0 );
-        digitalWrite( obj->IO[1], 0 ); delay(5);
-        digitalWrite( obj->IO[0], 1 ); delay(5);
-        digitalWrite( obj->IO[1], 1 );
-        
-    }
-    
-    /*─······································································─*/
-
     void begin( uchar rx, uchar tx, uint baudrate ) const noexcept {
-
         obj->ctx = new CARD( rx, tx );
         obj->ctx->begin( baudrate ); 
-        obj->ctx->listen(); 
-
-      //auto ATR = read();
-      //console::log( "->", encoder::buffer::buff2hex(ATR) );
-
+        obj->ctx->listen();
     }
 
 public:
@@ -76,7 +60,7 @@ public:
         obj->IO = ptr_t<uchar>({ vcc, rst, rx, tx }); obj->state=1;
         pinMode( vcc,OUTPUT ); pinMode( rst,OUTPUT );
         pinMode(  tx,OUTPUT ); pinMode(  rx,INPUT  );
-        clock(); init(); begin( rx, tx, 10753 );
+        clock(); reset(); begin( rx, tx, 10753 );
     }
 
    ~emv_t() noexcept { if( obj.count()>1 ){ return; } free(); }
@@ -87,41 +71,31 @@ public:
 
     bool is_closed()    const noexcept { return obj->state==0 || obj->ctx==nullptr; }
     bool is_available() const noexcept { return !is_closed(); }
+    void close()        const noexcept { free(); }
     
     /*─······································································─*/
 
-    void flush() const noexcept {
-        digitalWrite( obj->IO[1], 0 ); delay(5);
+    void off() const noexcept {
+        digitalWrite( obj->IO[0], 0 );
+        digitalWrite( obj->IO[1], 0 );
+    }
+
+    void reset() const noexcept { off(); delay(5);
+        digitalWrite( obj->IO[0], 1 );   delay(5);
         digitalWrite( obj->IO[1], 1 );
-        obj->ctx->flush(); // read();
     }
 
-    void close() const noexcept { free(); }
-
-    /*─······································································─*/
-
-    string_t transmit_t0( string_t data ) const noexcept {
-        write( data.slice( 0, 5 ) ); auto res1 = read();
-        if( res1.empty() )                { return nullptr; }
-        if( res1[0]=='6' || res1[0]=='9' ){ return res1; }
-        write( data.slice(5) ); auto res2 = read();
-        console::log( "<>", res1, res2 ); 
-        return res2;
-    }
-
-    string_t transmit_t1( string_t data ) const noexcept {
-        return nullptr;
-    }
-
-    string_t transmit( string_t data ) const noexcept {
-        return nullptr;
+    void flush() const noexcept {
+        digitalWrite( obj->IO[1], 0 );   delay(5);
+        digitalWrite( obj->IO[1], 1 );
+        obj->ctx->flush();
     }
 
     /*─······································································─*/
 
-    string_t read() const noexcept { 
+    string_t read( ulong timeout=30 ) const noexcept { 
         int c=0; ptr_t<char> buffer ( CHUNK_SIZE, '\0' );
-        while( (c=_read( buffer.get(), buffer.size() ))==-2 )
+        while( (c=_read( buffer.get(), buffer.size(), timeout ))==-2 )
              { process::next(); }if( c<=0 ){ return nullptr; }
         return string_t( buffer.get(), c );
     }
@@ -133,25 +107,25 @@ public:
 
     /*─······································································─*/
 
-    int _read( char *buffer, ulong size ) const noexcept { 
+    int _read( char *buffer, ulong size, ulong timeout=30 ) const noexcept { 
     if( is_closed() )               { return -1; } int len=0;
     if( buffer==nullptr || size==0 ){ return  0; } int   c=0;
         pinMode( obj->IO[3], INPUT_PULLUP );  
         ulong stamp = process::now();
 
-        while( (process::now()-stamp)<50 && len<size ){
+        while( (process::now()-stamp)<timeout && len<size ){
            if( !obj->ctx->available() ){ continue; }
-           if( (c=obj->ctx->read())<0 ){ continue; }
-           buffer[len]=c; stamp=process::now(); len++;
+           buffer[len]=obj->ctx->read(); 
+           stamp=process::now(); len++;
         }
         
         pinMode( obj->IO[3], OUTPUT ); return len;
     }
 
     int _write( char *buffer, ulong size ) const noexcept {
-    if( is_closed() )               { return -1; }
-    if( buffer==nullptr || size==0 ){ return  0; }
-        obj->ctx->stopListening(); int len=0;
+    if( is_closed() )               { return -1; } int len=0;
+    if( buffer==nullptr || size==0 ){ return  0; } int   c=0;
+        obj->ctx->stopListening();
 
         for( len=0; len<size; len++ )
            { obj->ctx->write_8E2(buffer[len]); }
@@ -161,11 +135,7 @@ public:
 
     /*─······································································─*/
 
-    void free() const noexcept {
-        if( obj->state==0 )
-          { return; } obj->state=0;
-      //process::clear( obj->event );
-    }
+    void free() const noexcept { if( obj->state==0 ) { return; } obj->state=0; }
 
 };}
 

@@ -62,7 +62,9 @@ This project provides a foundation for reading data from EMV smart cards using a
 
 ## APDU REFERENCES
 
-* AID  List:   [https://en.wikipedia.org/wiki/EMV]()
-* TLV  List:   [https://www.eftlab.com/knowledge-base/complete-list-of-emv-nfc-tags]()
-* APDU List:   [https://gist.github.com/hemantvallabh/d24d71a933e7319727cd3daa50ad9f2c]()
-* APDU Status: [https://www.eftlab.com/knowledge-base/complete-list-of-apdu-responses]()
+```
+🔗 AID  List:   https://en.wikipedia.org/wiki/EMV
+🔗 TLV  List:   https://www.eftlab.com/knowledge-base/complete-list-of-emv-nfc-tags
+🔗 APDU List:   https://gist.github.com/hemantvallabh/d24d71a933e7319727cd3daa50ad9f2c
+🔗 APDU Status: https://www.eftlab.com/knowledge-base/complete-list-of-apdu-responses
+```

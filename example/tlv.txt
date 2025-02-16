@@ -1,0 +1,30 @@
+c06f318407a0000000041010a526500a4d4153544552434152448701015f2d066573656e70749f1101019f12074352454449544f9000
+
+c0    => Comando
+6f 31 => File Control Information
+84 07 => Dedicated File
+      a0000000041010
+a5 26 => File Control Information
+      50 0a => Application Label
+            4d415354455243415244
+87 01 => Application Priority Indicator
+      01 
+5f2d  => Language Preference
+      06 6573656e7074
+9f11  => Issuer Code Table Index
+      01 01 
+9f12  => Application Preferred Name
+      07 4352454449544f
+
+9000 => Success
+
+c0771282025800940c0801010010010200100305019000
+
+c0    => Comando
+77 12 
+82 02 =>Application Interchange Profile 
+      58 00
+94 0c => Application File Locator
+      08 01 01 00 10 01 02 00 10 03 05 01
+
+9000 => success
