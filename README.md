@@ -52,6 +52,8 @@ This project provides a foundation for reading data from EMV smart cards using a
 
 ## Arduino PINOUTS
 
+![WhatsApp Image 2025-02-19 at 4 39 16 PM (copia)](https://github.com/user-attachments/assets/d9b69b08-8fe6-44b8-9d12-25f74a814c8a)
+
 ```
 📌 PIN 2 | OUTPUT => VCC Smart Card Pin
 📌 PIN 6 | OUTPUT => RST Smart Card Pin
