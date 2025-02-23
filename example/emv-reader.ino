@@ -1,4 +1,5 @@
 #include <nodepp.h>
+#include "src/emv/emv.h"
 
 using namespace nodepp;
 
@@ -25,6 +26,7 @@ void onMain() {
         auto data = Serial.readString();
         auto raw  = string_t( data.c_str(), data.length() );
 
+        if( raw.empty() )               {               return 1; }
         if( raw.size()==1 && raw[0]==0 ){ card.reset(); return 1; }
 
         card.write( raw ); return 1;
