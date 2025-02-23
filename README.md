@@ -73,6 +73,7 @@ This project provides a foundation for reading data from EMV smart cards using a
 
 Articles
 
+🔗 https://www.linkedin.com/pulse/card-verification-code-cvc-value-cvv-nayoon-cooray/
 🔗 https://hpkaushik121.medium.com/using-apdu-commands-emv-transaction-flow-part-3-65160ea8682a
 🔗 https://www.linkedin.com/pulse/emv-application-specification-read-data-ahmed-hemdan-farghaly
 🔗 https://hpkaushik121.medium.com/understanding-apdu-commands-emv-transaction-flow-part-2-d4e8df07eec#87ed
